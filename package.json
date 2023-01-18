@@ -1,6 +1,6 @@
 {
   "name": "@matheusluizn/react-google-login",
-  "version": "5.1.4",
+  "version": "5.1.6",
   "description": "A Google Login Component for React",
   "main": "dist/google-login.js",
   "scripts": {
@@ -85,8 +85,8 @@
     "webpack-dev-server": "^3.2.1"
   },
   "peerDependencies": {
-    "react": "^16",
-    "react-dom": "^16"
+    "react": "^18",
+    "react-dom": "^18"
   },
   "types": "./index.d.ts",
   "babel": {
