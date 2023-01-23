@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsrsasign/8.0.20/jsrsasign-all-min.js"></script>
+  </head>
+  <body>
+    <h1>Hello World!</h1>
+
+    <button onclick="handleClick()">Fazer login</button>
+
+    <script>
+
+      const handleCredentialResponse = async (credsResponse) => {
+        console.log(credsResponse);
+        const userdata = await (await fetch('https://www.googleapis.com/oauth2/v1/userinfo?access_token=' + credsResponse.access_token)).json()
+        console.log(userdata)
+      };
+      
+      var client;
+      window.addEventListener("load", () => {
+        console.log("teste");
+        client = google.accounts.oauth2.initTokenClient({
+          client_id:
+            "300774962201-2rkf3of1m9g0nrb3l502lcmu9sl1avo7.apps.googleusercontent.com",
+            scope: 'https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile openid',
+          callback: handleCredentialResponse,
+        });
+        console.log(client)
+      });
+
+      async function handleClick(){
+        client.requestAccessToken()
+      }
+    </script>
+  </body>
+</html>
